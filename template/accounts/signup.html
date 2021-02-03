@@ -1,0 +1,59 @@
+
+ {% load widget_tweaks %}
+ {% load static %}
+
+ <!DOCTYPE html>
+
+   
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'accounts/insta.css' %}">
+    <link rel="stylesheet" href="{% static 'accounts/css/signup.css' %}">
+    <!-- Halfmoon CSS -->
+<link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon-variables.min.css" rel="stylesheet" />
+<!--
+  Or,
+  Use the following (no variables, supports IE11):
+  <link href="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/css/halfmoon.min.css" rel="stylesheet" />
+-->
+
+<!-- Halfmoon JS -->
+<script src="https://cdn.jsdelivr.net/npm/halfmoon@1.1.1/js/halfmoon.min.js"></script>
+</head>
+<body>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Overpass+Mono" rel="stylesheet">
+    <div id="wrapper">
+        <div class="main-content">
+            <div class="header">
+                <img src="https://i.imgur.com/zqpwkLQ.png" />
+            </div>
+            
+        <form action="" class="w-400" method="POST">
+        {% csrf_token %}
+       
+        {% for fields in form.visible_fields %}
+         <div class="form-group">
+                {% render_field fields class="w-300 form-control" placeholder=fields.label %}
+                      <ul class="errorlist">
+                            {% for err in fields.errors %}
+                            <li>{{ err }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+                  
+        <input type="button" value="Log in" class="btn" >
+        </form>
+    
+    </div>   
+    
+    </div>
+
+       
+</body>
+</html>
