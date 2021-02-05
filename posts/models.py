@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 
 
 
-class POST(models.Model):
+class POSTS(models.Model):
     user=models.ForeignKey(get_user_model(),on_delete=models.CASCADE)
     caption=models.TextField()
     image=models.ImageField(upload_to='post')
@@ -13,15 +13,15 @@ class POST(models.Model):
     modified_at=models.DateTimeField(auto_now=True)
 class LIKE(models.Model):
     user=models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='user_like')
-    post=models.ForeignKey(POST,on_delete=models.CASCADE,related_name='post_like')
+    post=models.ForeignKey(POSTS,on_delete=models.CASCADE,related_name='post_like')
     class Meta:
         unique_together=['user','post']
 class COMMENT(models.Model):
     user=models.ForeignKey(get_user_model(),on_delete=models.CASCADE,related_name='user_comments')
-    post=models.ForeignKey(POST,on_delete=models.CASCADE,related_name='post_comments')
+    post=models.ForeignKey(POSTS,on_delete=models.CASCADE,related_name='post_comments')
 class HASHTAG(models.Model):
     tag=models.TextField(max_length=40)
-    post=models.ManyToManyField(POST)
+    post=models.ManyToManyField(POSTS)
 
 
 # Create your models here.
