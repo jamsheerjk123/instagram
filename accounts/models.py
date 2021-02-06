@@ -48,6 +48,7 @@ class UserAccounts(AbstractUser):
         ('O','Other')
     )
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    is_verified=models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []

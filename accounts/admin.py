@@ -2,6 +2,7 @@ from django.contrib import admin
 
 # Registefrom django.contrib import admin
 from .models import UserAccounts
+
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.utils.translation import ugettext_lazy as _
 

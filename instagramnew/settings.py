@@ -25,7 +25,7 @@ SECRET_KEY = 'w5f57_8oowa6u%uew6)z917f9)danryj=_*8u+31!qhp=yrzgx'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = ['widget_tweaks',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar','django.contrib.staticfiles',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -124,3 +125,16 @@ STATICFILES_DIRS =[ BASE_DIR /'static']
 AUTH_USER_MODEL = 'accounts.UserAccounts'
 MEDIA_URL='/media/'
 MEDIA_ROOT=BASE_DIR /'media'
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend' 
+EMAIL_HOST = 'smtp.gmail.com'  
+EMAIL_HOST_USER = 'fakeinstaweb@gmail.com'  
+EMAIL_HOST_PASSWORD = 'fakeinsta1130'  
+EMAIL_PORT = 587  
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+

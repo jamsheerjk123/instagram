@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from .models import POSTS
+from .forms import PostAddForm
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def home_view(request):
-
-    return render(request,'posts/home.html')
-
+    return render(request, 'posts/home.html')
+    
+@login_required
 def add_post(request):
     if request.method == 'POST':
         form = PostAddForm(request.POST, request.FILES)
