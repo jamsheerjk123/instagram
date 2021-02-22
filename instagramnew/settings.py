@@ -40,7 +40,7 @@ INSTALLED_APPS = ['widget_tweaks',
 ]
 
 MIDDLEWARE = [
-    'debug_toolbar','django.contrib.staticfiles',
+    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
