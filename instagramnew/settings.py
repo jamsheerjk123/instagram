@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'w5f57_8oowa6u%uew6)z917f9)danryj=_*8u+31!qhp=yrzgx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -74,12 +74,24 @@ WSGI_APPLICATION = 'instagramnew.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql', 
+            'NAME': 'jamsheerjk123$jamsheer',
+            'USER': 'jamsheerjk123',
+            'PASSWORD': '123456jk',
+            'HOST': 'jamsheerjk123.mysql.pythonanywhere-services.com',   # Or an IP Address that your DB is hosted on
+            'PORT': '3306',
+        }
+    }
 
 
 # Password validation
@@ -119,8 +131,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = BASE_DIR /'static'
-STATICFILES_DIRS =[ BASE_DIR /'static']
+STATIC_ROOT = BASE_DIR /'static'
+# STATICFILES_DIRS =[ BASE_DIR /'static']
 
 AUTH_USER_MODEL = 'accounts.UserAccounts'
 MEDIA_URL='/media/'
